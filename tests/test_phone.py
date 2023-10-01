@@ -19,7 +19,7 @@ def test_phone(phone):
     assert phone.number_of_sim == 2
 
 
-def test(phone, item):
+def test_add(phone, item):
     assert item + phone == 25
     assert phone + phone == 10
 
