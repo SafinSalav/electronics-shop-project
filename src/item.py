@@ -14,7 +14,7 @@ class Item:
 
     def __init__(self, name: str, price: float, quantity: int) -> None:
         """
-        Создание экземпляра класса item и добавление его в all.
+        Создание экземпляра класса Item и добавление его в all.
 
         :param name: Название товара.
         :param price: Цена за единицу товара.
@@ -25,31 +25,46 @@ class Item:
         self.quantity = quantity
         Item.all.append(self)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
+        """
+        Возвращает строку вида: "Item('iPhone 14', 120000, 5)".
+        """
         return f"Item('{self.__name}', {self.price}, {self.quantity})"
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Возвращает название товара.
+        """
         return self.__name
+
+    def __add__(self, other) -> int:
+        """
+        Сложение экземпляров класса Phone и Item
+        по количеству товара в магазине.
+        """
+        if isinstance(self, Item) and isinstance(other, Item):
+            return self.quantity + other.quantity
+        return None
 
     @property
     def name(self) -> str:
         """
-        Возвращает __name.
+        Возвращает название товара.
         """
         return self.__name
 
     @name.setter
     def name(self, new_name: str) -> None:
         """
-        Позволяет переименовать __name.
+        Позволяет переименовать название товара.
         """
         self.__name = new_name[:10]
 
     @classmethod
     def instantiate_from_csv(cls, file_path: str) -> None:
         """
-        Инициализирует экземпляры класса Item данными из файла
-        src/items.csv и заменяет ими старые экземпляры.
+        Инициализирует экземпляры класса Item данными из файла .csv
+        и заменяет ими старые экземпляры.
         """
         cls.all.clear()
         path = Path(__file__).resolve().parent.parent / file_path
