@@ -5,7 +5,13 @@ class Phone(Item):
     """
     Класс для представления смартфона, как товара в магазине.
     """
-    def __init__(self, name: str, price: float, quantity: int, number_of_sim: int) -> None:
+    def __init__(
+            self,
+            name: str,
+            price: float,
+            quantity: int,
+            number_of_sim: int
+    ) -> None:
         """
         Создание экземпляра класса Phone.
 
@@ -39,4 +45,5 @@ class Phone(Item):
         """
         Возвращает строку вида: "Phone('iPhone 14', 120000, 5, 2)".
         """
-        return f"Phone('{self.name}', {self.price}, {self.quantity}, {self.number_of_sim})"
+        return (f"Phone('{self.name}', {self.price}, "
+                f"{self.quantity}, {self.number_of_sim})")
