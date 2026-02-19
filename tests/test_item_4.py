@@ -25,6 +25,8 @@ def test_add(item1, phone1):
     assert item1 + item1 == 40
 
 
-def test_set_zero_sim(phone1):
+def test_change_number_of_sim(phone1):
+    phone1.number_of_sim = 1
+    assert phone1.number_of_sim == 1
     with pytest.raises(ValueError):
         phone1.number_of_sim = 0

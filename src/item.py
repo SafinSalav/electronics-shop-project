@@ -9,8 +9,8 @@ class Item:
     :param pay_rate: Уровень цен с учетом скидки.
     :param all: Хранение созданных экземпляров класса.
     """
-    pay_rate = 1.0
-    all = []
+    pay_rate: float = 1.0
+    all: list = []
 
     def __init__(self, name: str, price: float, quantity: int) -> None:
         """
@@ -20,9 +20,10 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
-        self.__name = name
-        self.price = price
-        self.quantity = quantity
+        super().__init__()
+        self.__name: str = name
+        self.price: float = price
+        self.quantity: int = quantity
         Item.all.append(self)
 
     def __repr__(self) -> str:
